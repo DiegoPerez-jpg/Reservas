@@ -17,22 +17,24 @@
    <children>
       <AnchorPane prefHeight="457.0" prefWidth="293.0">
          <children>
-            <TextField fx:id="cellphoneInput" layoutX="312.0" layoutY="23.0" prefHeight="25.0" prefWidth="174.0" />
+            <TextField fx:id="cellphoneInput" layoutX="216.0" layoutY="23.0" prefHeight="25.0" prefWidth="174.0" />
             <CheckBox fx:id="roomInput" layoutX="415.0" layoutY="228.0" mnemonicParsing="false" text="Requiere habitaciones" />
             <ComboBox fx:id="cookInput" layoutX="191.0" layoutY="224.0" prefWidth="150.0" />
-            <Label layoutX="184.0" layoutY="27.0" text="Numero de telefono" />
-            <Label layoutX="191.0" layoutY="66.0" prefHeight="17.0" prefWidth="100.0" text="Fecha del evento:" />
-            <Label layoutX="192.0" layoutY="113.0" prefHeight="17.0" prefWidth="100.0" text="Tipo del evento" />
-            <ComboBox fx:id="eventTypeInput" layoutX="312.0" layoutY="109.0" prefHeight="25.0" prefWidth="174.0" />
-            <DatePicker fx:id="dateInput" layoutX="312.0" layoutY="62.0" />
+            <Label layoutX="88.0" layoutY="27.0" text="Numero de telefono" />
+            <Label layoutX="95.0" layoutY="66.0" prefHeight="17.0" prefWidth="100.0" text="Fecha del evento:" />
+            <Label layoutX="96.0" layoutY="113.0" prefHeight="17.0" prefWidth="100.0" text="Tipo del evento" />
+            <ComboBox fx:id="eventTypeInput" layoutX="216.0" layoutY="109.0" prefHeight="25.0" prefWidth="174.0" />
+            <DatePicker fx:id="dateInput" layoutX="216.0" layoutY="62.0" />
             <Label layoutX="14.0" layoutY="159.0" prefHeight="17.0" prefWidth="115.0" text="Numero de personas" />
             <TextField fx:id="personAmountInput" layoutX="129.0" layoutY="155.0" />
             <Label fx:id="jorunalAmountLabel" layoutX="307.0" layoutY="159.0" prefHeight="17.0" prefWidth="115.0" text="Numero de jornadas" />
             <TextField fx:id="journalAmountInput" layoutX="422.0" layoutY="155.0" />
-            <Label layoutX="74.0" layoutY="228.0" prefHeight="17.0" prefWidth="115.0" text="Tipo de cocina" />
+            <Label layoutX="49.0" layoutY="228.0" prefHeight="17.0" prefWidth="115.0" text="Tipo de cocina" />
             <Button fx:id="generate" layoutX="139.0" layoutY="294.0" mnemonicParsing="false" onAction="#generarReserva" text="Guardar reserva" />
             <Button fx:id="clean" layoutX="265.0" layoutY="294.0" mnemonicParsing="false" onAction="#limpiarCampos" text="Limpiar campos" />
             <Button fx:id="consult" layoutX="428.0" layoutY="294.0" mnemonicParsing="false" onAction="#consultarReservas" text="Consultar reservas" />
+            <Button fx:id="crearContactoButtton" layoutX="553.0" layoutY="23.0" mnemonicParsing="false" onAction="#crearContacto" text="Crearlo" />
+            <Label fx:id="unfindLabel" layoutX="404.0" layoutY="27.0" prefHeight="17.0" prefWidth="149.0" text="No se encontro el contacto" />
          </children>
       </AnchorPane>
    </children>

@@ -39,6 +39,10 @@ public class PrimaryController {
     private Button clean;
     @FXML
     private Button consult;
+    @FXML
+    private Button crearContactoButtton;
+    @FXML
+    private Label unfindLabel;
 
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
@@ -61,5 +65,9 @@ public class PrimaryController {
 
     @FXML
     private void consultarReservas(ActionEvent event) {
+    }
+
+    @FXML
+    private void crearContacto(ActionEvent event) {
     }
 }
