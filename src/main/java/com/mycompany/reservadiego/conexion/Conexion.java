@@ -1,0 +1,52 @@
+package com.mycompany.reservadiego.conexion;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+public class Conexion {
+    private Connection conexion;
+    private static Conexion conexionObject;
+    private static final String URL = "jdbc:mysql://localhost:3306/reservas";
+    private static final String USER = "root";
+    private static final String PASSWORD = "";
+
+    private Conexion(String URL, String USER, String PASSWORD){
+        try {
+            // 1. Cargar el driver (opcional en Java 8+)
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // 2. Establecer la conexión
+            conexion = DriverManager.getConnection(URL, USER, PASSWORD);
+
+            // 3. Verificar la conexión
+            if (conexion != null) {
+                System.out.println("✅ Conexión establecida correctamente");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("❌ Error de conexión: " + e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println("❌ No se encontró el driver JDBC: " + e.getMessage());
+        }
+    }
+
+
+
+    public static Connection getConnection(){
+        try {
+            // Cargar driver (opcional en Java 8+)
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Devuelve una nueva conexión cada vez
+            Connection conexion = DriverManager.getConnection(URL, USER, PASSWORD);
+            System.out.println("✅ Conexión establecida correctamente");
+            return conexion;
+
+        } catch (SQLException e) {
+            System.out.println("❌ Error de conexión: " + e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println("❌ No se encontró el driver JDBC: " + e.getMessage());
+        }
+        return null;
+    }
+}

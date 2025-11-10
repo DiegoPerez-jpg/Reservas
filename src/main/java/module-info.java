@@ -6,4 +6,6 @@ module com.mycompany.reservadiego {
 
     opens com.mycompany.reservadiego to javafx.fxml;
     exports com.mycompany.reservadiego;
+    exports com.mycompany.reservadiego.Controllers;
+    opens com.mycompany.reservadiego.Controllers to javafx.fxml;
 }
