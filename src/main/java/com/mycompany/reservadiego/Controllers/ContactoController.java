@@ -14,6 +14,6 @@ public class ContactoController {
         if(correoElectronico.isEmpty())throw new InvalidUserCreation("El campo Correo electronico no puede estar vacio");
         if(!correoElectronico.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"))throw new InvalidUserCreation("El campo Correo electronico debe seguir el formato usuario123@mail.co");
 
-        return new Contacto(0,nombreCompleto,numeroTelefono,correoElectronico);
+        return new Contacto(0,nombreCompleto,numeroTelefono.trim(),correoElectronico);
     }
 }

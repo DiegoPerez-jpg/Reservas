@@ -1,6 +1,0 @@
-vale aver mañana tengo que hacer uncas cuantas cosas
-#1 primero que todo agregar errores en la vista del usuario ej usuario no encontrado, faltan añadir cosas hacerlo mediante dtd que valide en el contructor y lance excepciones propias
-#2 en la segunda vista hay que importar todo cn una join asi que crear un dtd que mezcle los datos de la join,
-#3 implementar anular
-#4 implentar filtrar
-#5 mirar y preguntar las cosas especiales que pide el profe en el apartado de calificaciones

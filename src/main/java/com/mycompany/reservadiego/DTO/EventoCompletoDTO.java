@@ -1,16 +1,16 @@
 package com.mycompany.reservadiego.DTO;
 
 public class EventoCompletoDTO {
-    public int numeroTelefono;
-    public String correoElectronico;
-    public String tipoEvento;
-    public String cocina;
-    public int numeroPersonas;
-    public boolean requiereHabitaciones;
-    public int jornadas;
-    public String nombreCompleto;
+    private String numeroTelefono;
+    private String correoElectronico;
+    private String tipoEvento;
+    private String cocina;
+    private int numeroPersonas;
+    private boolean requiereHabitaciones;
+    private int jornadas;
+    private String nombreCompleto;
 
-    public EventoCompletoDTO(String nombreCompleto, int numeroTelefono, String correoElectronico,
+    public EventoCompletoDTO(String nombreCompleto, String numeroTelefono, String correoElectronico,
                              String tipoEvento, String cocina, int numeroPersonas, boolean requiereHabitaciones,int jornadas) {
         this.nombreCompleto = nombreCompleto;
         this.numeroTelefono = numeroTelefono;
@@ -24,6 +24,38 @@ public class EventoCompletoDTO {
 
     public Object[] toObject(){
         return new Object[]{nombreCompleto,numeroTelefono,correoElectronico,tipoEvento,cocina,numeroPersonas,requiereHabitaciones,tipoEvento,cocina,numeroPersonas,requiereHabitaciones,jornadas};
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public String getNumeroTelefono() {
+        return numeroTelefono;
+    }
+
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
+
+    public String getTipoEvento() {
+        return tipoEvento;
+    }
+
+    public String getCocina() {
+        return cocina;
+    }
+
+    public int getNumeroPersonas() {
+        return numeroPersonas;
+    }
+
+    public boolean isRequiereHabitaciones() {
+        return requiereHabitaciones;
+    }
+
+    public int getJornadas() {
+        return jornadas;
     }
 
     @Override

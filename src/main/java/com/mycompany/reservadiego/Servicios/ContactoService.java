@@ -27,7 +27,7 @@ public class ContactoService {
         contactoDAO.insertWithoutID(contacto);
     }
 
-    public ArrayList<Contacto> findByFilters(String nombre, String correo, int numero){
+    public ArrayList<Contacto> findByFilters(String nombre, String correo, String numero){
         return new ArrayList<>(contactoDAO.findByFilters(0,nombre,numero,correo));
     }
 }

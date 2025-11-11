@@ -21,13 +21,13 @@ public class DAOContacto {
             e.printStackTrace();
         }
     }
-    public List<Contacto> findByFilters(int id, String nombre, int numero, String correo) {
+    public List<Contacto> findByFilters(int id, String nombre, String numero, String correo) {
         List<Contacto> list = new ArrayList<>();
         String sql = "SELECT * FROM contacto WHERE " +
                 "(id = ? OR ? = 0) AND " +
                 "(nombre = ? OR ? = '') AND " +
                 "(numero = ? OR ? = '') AND " +
-                "(correo = ? OR ? = 0)";
+                "(correo = ? OR ? = '')";
 
         try (Connection conn = Conexion.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -41,8 +41,8 @@ public class DAOContacto {
             ps.setString(4, nombre);
 
             // número
-            ps.setInt(5, numero);
-            ps.setInt(6, numero);
+            ps.setString(5, numero);
+            ps.setString(6, numero);
 
             // correo
             ps.setString(7, correo);

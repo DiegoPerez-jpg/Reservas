@@ -15,6 +15,7 @@ import com.mycompany.reservadiego.modelos.Congreso;
 import com.mycompany.reservadiego.modelos.Tipoevento;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -24,6 +25,7 @@ import javafx.scene.control.TextField;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.stage.Stage;
 
 public class PrimaryController {
 
@@ -84,6 +86,7 @@ public class PrimaryController {
         crearContactoButtton.setVisible(false);
         añadirAComboBox(eventTypeInput,new TipoeventoService().getNombres());
         añadirAComboBox(cookInput,new CocinaService().getNombres());
+        comboBoxCambiado(new ActionEvent());
     }
 
     @FXML
@@ -119,9 +122,11 @@ public class PrimaryController {
             }
         } catch (UserNotFound u){
             unfindLabel.setVisible(true);
+            unfindLabel.setText("Usuario no encontrado");
             crearContactoButtton.setVisible(true);
         } catch (NumberFormatException n){
-            System.out.println("No campos vacios porfis");
+            unfindLabel.setVisible(true);
+            unfindLabel.setText("No deje ningun campo vacio");
         }
 
 
@@ -130,6 +135,9 @@ public class PrimaryController {
 
     @FXML
     private void consultarReservas(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setWidth(940);
+        stage.setHeight(680);
         App.setRoot("reservas");
     }
 

@@ -49,7 +49,7 @@ public class EventoService {
     }
 
 
-    public Object[]  getEventosCompletos(String nombre, String correo, int numero, String cocina, String tipoEvento, Boolean habitaciones, int numeroPersonas, int numeroJornadas) {
+    public Object[]  getEventosCompletos(String nombre, String correo, String numero, String cocina, String tipoEvento, Boolean habitaciones, int numeroPersonas, int numeroJornadas) {
         ArrayList<EventoCompletoDTO> eventosCompletos = new ArrayList<>();
         ArrayList<Integer> ids = new ArrayList<>();
 
@@ -81,7 +81,7 @@ public class EventoService {
             if (contacto != null && cocinaObj != null && tipoEventoObj != null) {
                 EventoCompletoDTO dto = new EventoCompletoDTO(
                         contacto.getNombre(),
-                        Integer.parseInt(contacto.getNumero()),
+                        contacto.getNumero(),
                         contacto.getCorreo(),
                         tipoEventoObj.getTipoevento(),
                         cocinaObj.getTipococina(),

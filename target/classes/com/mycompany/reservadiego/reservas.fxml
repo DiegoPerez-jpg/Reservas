@@ -10,27 +10,27 @@
 <AnchorPane id="AnchorPane" prefHeight="625.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.reservadiego.Controllers.ReservasController">
    <children>
       <Button layoutX="756.0" layoutY="586.0" mnemonicParsing="false" onAction="#switchToInit" text="Atras" />
-      <TextField fx:id="numeroInput" layoutX="34.0" layoutY="14.0" prefHeight="25.0" prefWidth="136.0" />
-      <TextField fx:id="mailInput" layoutX="170.0" layoutY="14.0" prefHeight="25.0" prefWidth="90.0" />
-      <TextField fx:id="nombreInput" layoutX="260.0" layoutY="14.0" prefHeight="25.0" prefWidth="78.0" />
-      <TextField fx:id="tipoInput" layoutX="338.0" layoutY="14.0" prefHeight="25.0" prefWidth="72.0" />
-      <TextField fx:id="cocinaInput" layoutX="425.0" layoutY="14.0" prefHeight="25.0" prefWidth="72.0" />
-      <TextField fx:id="personasInput" layoutX="626.0" layoutY="14.0" prefHeight="25.0" prefWidth="108.0" />
-      <TextField fx:id="jornadasInput" layoutX="726.0" layoutY="14.0" prefHeight="25.0" prefWidth="78.0" />
+      <TextField fx:id="numeroInput" layoutX="34.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" />
+      <TextField fx:id="mailInput" layoutX="168.0" layoutY="14.0" prefHeight="25.0" prefWidth="91.0" />
+      <TextField fx:id="nombreInput" layoutX="259.0" layoutY="14.0" prefHeight="25.0" prefWidth="120.0" />
+      <TextField fx:id="tipoInput" layoutX="379.0" layoutY="14.0" prefHeight="25.0" prefWidth="92.0" />
+      <TextField fx:id="cocinaInput" layoutX="471.0" layoutY="14.0" prefHeight="25.0" prefWidth="69.0" />
+       <CheckBox fx:id="requiereInput" layoutX="609.0" layoutY="18.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="108.0" text="Si?" />
+      <TextField fx:id="personasInput" layoutX="670.0" layoutY="14.0" prefHeight="25.0" prefWidth="129.0" />
+      <TextField fx:id="jornadasInput" layoutX="799.0" layoutY="14.0" prefHeight="25.0" prefWidth="100.0" />
       <Button fx:id="anularButton" layoutX="27.0" layoutY="586.0" mnemonicParsing="false" onAction="#anularEvento" text="Anular Evento" />
-      <TableView fx:id="EventosCompletosTable" layoutX="34.0" layoutY="39.0" prefHeight="547.0" prefWidth="782.0">
+      <TableView fx:id="EventosCompletosTable" layoutX="34.0" layoutY="39.0" prefHeight="547.0" prefWidth="932.0">
         <columns>
-          <TableColumn prefWidth="134.0" text="Numero Telefono" />
-          <TableColumn minWidth="2.0" prefWidth="91.0" text="Correo Electronico" />
-            <TableColumn minWidth="0.0" prefWidth="75.0" text="Nombre Compelto" />
-            <TableColumn minWidth="0.0" prefWidth="92.0" text="Tipo Evento" />
-            <TableColumn minWidth="0.0" prefWidth="69.0" text="Cocina" />
-            <TableColumn minWidth="0.0" prefWidth="129.0" text="Requiere habitaciones" />
-            <TableColumn prefWidth="107.0" text="Numero personas" />
-            <TableColumn prefWidth="75.0" text="Numero jornadas" />
+            <TableColumn fx:id="colNumeroTelefono" prefWidth="134.0" text="Número Teléfono" />
+            <TableColumn fx:id="colCorreoElectronico" prefWidth="91.0" text="Correo Electrónico" />
+            <TableColumn fx:id="colNombreCompleto" prefWidth="120.0" text="Nombre Completo" />
+            <TableColumn fx:id="colTipoEvento" prefWidth="92.0" text="Tipo Evento" />
+            <TableColumn fx:id="colCocina" prefWidth="69.0" text="Cocina" />
+            <TableColumn fx:id="colRequiereHabitaciones" prefWidth="150.0" text="Requiere Habitaciones" />
+            <TableColumn fx:id="colNumeroPersonas" prefWidth="129.0" text="Número Personas" />
+            <TableColumn fx:id="colNumeroJornadas" prefWidth="100.0" text="Número Jornadas" />
         </columns>
       </TableView>
       <Button fx:id="aplicarButton" layoutX="125.0" layoutY="586.0" mnemonicParsing="false" onAction="#aplicarFiltros" text="Aplicar filtros" />
-      <CheckBox fx:id="requiereInput" layoutX="509.0" layoutY="18.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="108.0" text="Si?" />
    </children>
 </AnchorPane>
