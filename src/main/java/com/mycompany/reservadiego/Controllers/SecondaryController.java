@@ -3,6 +3,7 @@ package com.mycompany.reservadiego.Controllers;
 import java.io.IOException;
 
 import com.mycompany.reservadiego.App;
+import com.mycompany.reservadiego.Exception.InvalidUserCreation;
 import com.mycompany.reservadiego.Exception.MailAlreadyExists;
 import com.mycompany.reservadiego.Exception.NumberAlreadyExist;
 import com.mycompany.reservadiego.Servicios.ContactoService;
@@ -10,6 +11,7 @@ import com.mycompany.reservadiego.modelos.Contacto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class SecondaryController {
@@ -22,6 +24,8 @@ public class SecondaryController {
     private TextField mailInput;
     @FXML
     private Button registrarseButton;
+    @FXML
+    private Label errorLabel;
 
     @FXML
     private void switchToPrimary() throws IOException {
@@ -29,14 +33,19 @@ public class SecondaryController {
     }
 
     @FXML
+    private void initialize() throws IOException {
+        errorLabel.setText("");
+    }
+
+    @FXML
     private void registrar(ActionEvent event) throws IOException {
         try{
-            Contacto contacto = new Contacto(0,nameInput.getText(),numberInput.getText(),mailInput.getText());
+
+            Contacto contacto =  new ContactoController().crearContacto(nameInput.getText(), numberInput.getText(), mailInput.getText());
             new ContactoService().insertContacto(contacto);
             switchToPrimary();
-        } catch (MailAlreadyExists m){
-
-        } catch (NumberAlreadyExist n){
+        } catch (MailAlreadyExists | NumberAlreadyExist | InvalidUserCreation m){
+            errorLabel.setText(m.getMessage());
 
         }
 

@@ -5,6 +5,8 @@ import com.mycompany.reservadiego.Exception.MailAlreadyExists;
 import com.mycompany.reservadiego.Exception.NumberAlreadyExist;
 import com.mycompany.reservadiego.modelos.Contacto;
 
+import java.util.ArrayList;
+
 public class ContactoService {
     private final DAOContacto contactoDAO = new DAOContacto();
 
@@ -23,5 +25,9 @@ public class ContactoService {
         if(buscarPorCorreo(contacto.getCorreo()) != null){throw new MailAlreadyExists("Contacto ya existe");}
         if(buscarPorNumero(contacto.getNumero()) != null){throw new NumberAlreadyExist("Contacto ya existe");}
         contactoDAO.insertWithoutID(contacto);
+    }
+
+    public ArrayList<Contacto> findByFilters(String nombre, String correo, int numero){
+        return new ArrayList<>(contactoDAO.findByFilters(0,nombre,numero,correo));
     }
 }

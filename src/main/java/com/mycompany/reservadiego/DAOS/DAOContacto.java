@@ -9,18 +9,61 @@ import java.util.List;
 
 public class DAOContacto {
 
-public void insert(Contacto entity) {
-    String sql = "INSERT INTO contacto (id, nombre, numero, correo) VALUES (?, ?, ?, ?)";
-    try (Connection conn = Conexion.getConnection();
-         PreparedStatement ps = conn.prepareStatement(sql)) {
-ps.setInt(1, entity.getId());
-ps.setString(2, entity.getNombre());
-ps.setString(3, entity.getNumero());
-ps.setString(4, entity.getCorreo());        ps.executeUpdate();
-    } catch (SQLException e) {
-        e.printStackTrace();
+    public void insert(Contacto entity) {
+        String sql = "INSERT INTO contacto (id, nombre, numero, correo) VALUES (?, ?, ?, ?)";
+        try (Connection conn = Conexion.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, entity.getId());
+            ps.setString(2, entity.getNombre());
+            ps.setString(3, entity.getNumero());
+            ps.setString(4, entity.getCorreo());        ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-}
+    public List<Contacto> findByFilters(int id, String nombre, int numero, String correo) {
+        List<Contacto> list = new ArrayList<>();
+        String sql = "SELECT * FROM contacto WHERE " +
+                "(id = ? OR ? = 0) AND " +
+                "(nombre = ? OR ? = '') AND " +
+                "(numero = ? OR ? = '') AND " +
+                "(correo = ? OR ? = 0)";
+
+        try (Connection conn = Conexion.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            // id
+            ps.setInt(1, id);
+            ps.setInt(2, id);
+
+            // nombre
+            ps.setString(3, nombre);
+            ps.setString(4, nombre);
+
+            // número
+            ps.setInt(5, numero);
+            ps.setInt(6, numero);
+
+            // correo
+            ps.setString(7, correo);
+            ps.setString(8, correo);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Contacto(
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getString("numero"),
+                        rs.getString("correo")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
 
 public void insertWithoutID(Contacto entity) {
     String sql = "INSERT INTO contacto (nombre, numero, correo) VALUES ( ?, ?, ?)";

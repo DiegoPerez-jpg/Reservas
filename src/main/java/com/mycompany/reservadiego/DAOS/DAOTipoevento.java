@@ -22,7 +22,33 @@ ps.setString(11, entity.getTipoevento());        ps.executeUpdate();
     }
 }
 
+    public List<Tipoevento> findByFilters(int id, String tipoevento) {
+        List<Tipoevento> list = new ArrayList<>();
+        String sql = "SELECT * FROM tipoevento WHERE " +
+                "(id = ? OR ? = 0) AND " +
+                "(tipoevento = ? OR ? = '')";
 
+        try (Connection conn = Conexion.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            ps.setInt(2, id);
+            ps.setString(3, tipoevento);
+            ps.setString(4, tipoevento);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Tipoevento(
+                        rs.getInt("id"),
+                        rs.getString("tipoevento")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
 public void update(Tipoevento tipoevento) {
     String sql = "UPDATE tipoevento SET tipoevento = ? WHERE id = ?";
     try (Connection conn = Conexion.getConnection();

@@ -55,31 +55,44 @@ public void update(Evento evento) {
     }
 }
 
-    public List<Evento> findByFilters(int fkidcontacto, int fkidtipodeevento, int fkidtipodecocina, int numeropersonas, int requierehabitaciones) {
+    public List<Evento> findByFilters(int fkidcontacto, int fkidtipodeevento, int fkidtipodecocina,
+                                      int numeropersonas, int requierehabitaciones) {
+        System.out.println(fkidcontacto+ " " + fkidtipodecocina + " " + numeropersonas + " " + requierehabitaciones+" " + fkidtipodeevento);
         List<Evento> list = new ArrayList<>();
-        String sql = "SELECT * FROM evento WHERE " +
-                "(fkidcontacto = ? OR ? = 0) AND " +
-                "(fkidtipodeevento = ? OR ? = 0) AND " +
-                "(fkidtipodecocina = ? OR ? = 0) AND " +
-                "(numeropersonas = ? OR ? = 0) AND " +
-                "(requierehabitaciones = ? OR ? = 0)";
+        StringBuilder sql = new StringBuilder("SELECT * FROM evento WHERE 1=1");
+        List<Integer> parametros = new ArrayList<>();
+
+        if (fkidcontacto != 0) {
+            sql.append(" AND fkidcontacto = ?");
+            parametros.add(fkidcontacto);
+        }
+        if (fkidtipodeevento != 0) {
+            sql.append(" AND fkidtipodeevento = ?");
+            parametros.add(fkidtipodeevento);
+        }
+        if (fkidtipodecocina != 0) {
+            sql.append(" AND fkidtipodecocina = ?");
+            parametros.add(fkidtipodecocina);
+        }
+        if (numeropersonas != 0) {
+            sql.append(" AND numeropersonas = ?");
+            parametros.add(numeropersonas);
+        }
+        if (requierehabitaciones != 0) {
+            sql.append(" AND requierehabitaciones = ?");
+            parametros.add(requierehabitaciones);
+        }
 
         try (Connection conn = Conexion.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+             PreparedStatement ps = conn.prepareStatement(sql.toString())) {
 
-            ps.setInt(1, fkidcontacto);
-            ps.setInt(2, fkidcontacto);
-            ps.setInt(3, fkidtipodeevento);
-            ps.setInt(4, fkidtipodeevento);
-            ps.setInt(5, fkidtipodecocina);
-            ps.setInt(6, fkidtipodecocina);
-            ps.setInt(7, numeropersonas);
-            ps.setInt(8, numeropersonas);
-            ps.setInt(9, requierehabitaciones);
-            ps.setInt(10, requierehabitaciones);
+            for (int i = 0; i < parametros.size(); i++) {
+                ps.setInt(i + 1, parametros.get(i));
+            }
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                System.out.println("0");
                 list.add(new Evento(
                         rs.getInt("id"),
                         rs.getInt("fkidcontacto"),
@@ -97,7 +110,7 @@ public void update(Evento evento) {
     }
 
 
-public void delete(int id) {
+    public void delete(int id) {
     String sql = "DELETE FROM evento WHERE id = ?";
     try (Connection conn = Conexion.getConnection();
          PreparedStatement ps = conn.prepareStatement(sql)) {

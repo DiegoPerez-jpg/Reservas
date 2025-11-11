@@ -6,8 +6,8 @@ import java.sql.SQLException;
 public class Conexion {
     private Connection conexion;
     private static Conexion conexionObject;
-    private static final String URL = "jdbc:mysql://localhost:3306/reservas";
-    private static final String USER = "root";
+    private static final String URL = "jdbc:mysql://192.168.204.109:3306/reservas";
+    private static final String USER = "usuario";
     private static final String PASSWORD = "";
 
     private Conexion(String URL, String USER, String PASSWORD){

@@ -21,7 +21,7 @@ ps.setInt(3, entity.getNumerojornadas());        ps.executeUpdate();
     }
 }
     public void insertWithoutId(Congreso entity) {
-        String sql = "INSERT INTO congreso ( fkdeevento, numerojornadas) VALUES ( ?, ?)";
+        String sql = "INSERT INTO congreso ( fkIdEvento, numeroJornadas) VALUES ( ?, ?)";
         try (Connection conn = Conexion.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, entity.getFkidevento());
@@ -33,7 +33,7 @@ ps.setInt(3, entity.getNumerojornadas());        ps.executeUpdate();
 
 
 public void update(Congreso congreso) {
-    String sql = "UPDATE congreso SET fkidevento = ?, numerojornadas = ? WHERE id = ?";
+    String sql = "UPDATE congreso SET fkIdEvento = ?, numeroJornadas = ? WHERE id = ?";
     try (Connection conn = Conexion.getConnection();
          PreparedStatement ps = conn.prepareStatement(sql)) {
         ps.setInt(1, congreso.getFkidevento());

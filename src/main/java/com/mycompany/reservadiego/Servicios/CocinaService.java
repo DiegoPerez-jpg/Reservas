@@ -15,6 +15,10 @@ public class CocinaService {
         return cocinaDAO.findAll().stream().map(Cocina::getTipococina).collect(Collectors.toCollection(ArrayList::new));
     }
 
+    public ArrayList<Cocina> findAll(){
+        return cocinaDAO.findAll().stream().collect(Collectors.toCollection(ArrayList::new));
+    }
+
     public int getIdByNombre(String nombre){
         return getCocinaByNombre(nombre).getId();
     }
@@ -22,5 +26,7 @@ public class CocinaService {
     public Cocina getCocinaByNombre(String nombre){
         return cocinaDAO.findAll().stream().filter(p-> p.getTipococina().equals(nombre)).findFirst().orElse(null);
     }
-
+    public ArrayList<Cocina> findByFilters(int id, String nombre){
+        return new ArrayList<>(cocinaDAO.findByFilters(id,nombre));
+    }
 }

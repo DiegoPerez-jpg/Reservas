@@ -1,13 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="com.mycompany.reservadiego.Controllers.ReservasController">
+<AnchorPane id="AnchorPane" prefHeight="625.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.reservadiego.Controllers.ReservasController">
    <children>
-      <ListView fx:id="reservasList" layoutX="34.0" layoutY="43.0" prefHeight="300.0" prefWidth="522.0" />
-      <Button layoutX="280.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchToInit" text="Atras" />
+      <Button layoutX="756.0" layoutY="586.0" mnemonicParsing="false" onAction="#switchToInit" text="Atras" />
+      <TextField fx:id="numeroInput" layoutX="34.0" layoutY="14.0" prefHeight="25.0" prefWidth="136.0" />
+      <TextField fx:id="mailInput" layoutX="170.0" layoutY="14.0" prefHeight="25.0" prefWidth="90.0" />
+      <TextField fx:id="nombreInput" layoutX="260.0" layoutY="14.0" prefHeight="25.0" prefWidth="78.0" />
+      <TextField fx:id="tipoInput" layoutX="338.0" layoutY="14.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="cocinaInput" layoutX="425.0" layoutY="14.0" prefHeight="25.0" prefWidth="72.0" />
+      <TextField fx:id="personasInput" layoutX="626.0" layoutY="14.0" prefHeight="25.0" prefWidth="108.0" />
+      <TextField fx:id="jornadasInput" layoutX="726.0" layoutY="14.0" prefHeight="25.0" prefWidth="78.0" />
+      <Button fx:id="anularButton" layoutX="27.0" layoutY="586.0" mnemonicParsing="false" onAction="#anularEvento" text="Anular Evento" />
+      <TableView fx:id="EventosCompletosTable" layoutX="34.0" layoutY="39.0" prefHeight="547.0" prefWidth="782.0">
+        <columns>
+          <TableColumn prefWidth="134.0" text="Numero Telefono" />
+          <TableColumn minWidth="2.0" prefWidth="91.0" text="Correo Electronico" />
+            <TableColumn minWidth="0.0" prefWidth="75.0" text="Nombre Compelto" />
+            <TableColumn minWidth="0.0" prefWidth="92.0" text="Tipo Evento" />
+            <TableColumn minWidth="0.0" prefWidth="69.0" text="Cocina" />
+            <TableColumn minWidth="0.0" prefWidth="129.0" text="Requiere habitaciones" />
+            <TableColumn prefWidth="107.0" text="Numero personas" />
+            <TableColumn prefWidth="75.0" text="Numero jornadas" />
+        </columns>
+      </TableView>
+      <Button fx:id="aplicarButton" layoutX="125.0" layoutY="586.0" mnemonicParsing="false" onAction="#aplicarFiltros" text="Aplicar filtros" />
+      <CheckBox fx:id="requiereInput" layoutX="509.0" layoutY="18.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="108.0" text="Si?" />
    </children>
 </AnchorPane>

@@ -76,7 +76,6 @@ public class PrimaryController {
         }
     }
 
-    @FXML
     public void initialize(){
         Conexion.getConnection();
         jorunalAmountLabel.setVisible(false);
@@ -98,6 +97,17 @@ public class PrimaryController {
         System.out.println("xdddddd");
         Cocina cocina = new CocinaService().getCocinaByNombre(cookInput.getValue().toString());
         try{
+            System.out.println("Debug creación de evento:");
+            System.out.println("Teléfono: " + cellphoneInput.getText());
+            System.out.println("Fecha: " + dateInput.getValue());
+            System.out.println("Tipo evento: " + tipoevento);
+            System.out.println("Número de personas: " + personAmountInput.getText());
+            System.out.println("Cocina: " + cocina);
+            System.out.println("Habitaciones: " + roomInput.isSelected());
+            if (tipoevento != null) {
+                System.out.println("Tipo de evento nombre: " + tipoevento.getTipoevento());
+            }
+            System.out.println("Número de jornadas: " + journalAmountInput.getText());
             new EventoService().crearEvento(cellphoneInput.getText(),
                     dateInput.getValue(),
                     tipoevento,
@@ -105,7 +115,7 @@ public class PrimaryController {
                     cocina,
                     roomInput.isSelected());
             if(tipoevento.getTipoevento().equals("Congreso")){
-                new CongresoService().insertCongreso(Integer.parseInt(jorunalAmountLabel.getText()));
+                new CongresoService().insertCongreso(Integer.parseInt(journalAmountInput.getText()));
             }
         } catch (UserNotFound u){
             unfindLabel.setVisible(true);
@@ -119,7 +129,8 @@ public class PrimaryController {
 
 
     @FXML
-    private void consultarReservas(ActionEvent event) {
+    private void consultarReservas(ActionEvent event) throws IOException {
+        App.setRoot("reservas");
     }
 
     @FXML

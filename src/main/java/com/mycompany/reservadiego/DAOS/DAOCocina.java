@@ -20,6 +20,35 @@ ps.setString(2, entity.getTipococina());        ps.executeUpdate();
     }
 }
 
+    public List<Cocina> findByFilters(int id, String tipococina) {
+        List<Cocina> list = new ArrayList<>();
+        String sql = "SELECT * FROM cocina WHERE " +
+                "(id = ? OR ? = 0) AND " +
+                "(tipococina = ? OR ? = '')";
+
+        try (Connection conn = Conexion.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            ps.setInt(2, id);
+            ps.setString(3, tipococina);
+            ps.setString(4, tipococina);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Cocina(
+                        rs.getInt("id"),
+                        rs.getString("tipococina")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+
 
 public void update(Cocina cocina) {
     String sql = "UPDATE cocina SET tipococina = ? WHERE id = ?";
